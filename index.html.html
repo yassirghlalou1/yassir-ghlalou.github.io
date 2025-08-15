@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yassir Ghlalou – Data Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0e;
+      --card: #131318;
+      --text: #eaeaf0;
+      --muted: #b9bcc6;
+      --accent: #F2C811; /* Power BI gold */
+      --accent-weak: #f7df6b;
+      --border: #23232b;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    /* Header / Hero */
+    header { position: relative; padding: 96px 0 72px; background: radial-gradient(1200px 500px at 50% -100px, rgba(242,200,17,0.18), transparent), linear-gradient(180deg, rgba(242,200,17,0.05), transparent 60%); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 48px; }
+    .brand { font-weight: 800; letter-spacing: .5px; }
+    .brand span { color: var(--accent); }
+    .nav a { color: var(--muted); margin-left: 18px; font-weight: 600; }
+    .nav a:hover { color: var(--text); }
+
+    .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; }
+    .title { font-size: clamp(36px, 6vw, 54px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; }
+    .subtitle { font-size: 18px; color: var(--muted); margin: 0 0 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); border-radius: 999px; color: var(--muted); margin-bottom: 14px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); font-weight: 700; }
+    .btn.primary { background: var(--accent); color: #111; border-color: rgba(0,0,0,0.15); }
+    .btn.primary:hover { filter: brightness(0.95); }
+    .btn.ghost { background: #15151b; color: var(--text); }
+    .hero-card { background: var(--card); border: 1px solid var(--border); padding: 18px; border-radius: 18px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+    .metric { background: #0f0f14; border: 1px solid var(--border); border-radius: 14px; padding: 14px; text-align: center; }
+    .metric b { font-size: 20px; color: var(--accent); }
+
+    section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 28px; margin: 0 0 6px; }
+    p.lead { color: var(--muted); margin: 0 0 22px; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .chip { background: #121217; padding: 10px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); width: max-content; }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 50px rgba(0,0,0,.35); border-color: rgba(242,200,17,0.35); }
+    .thumb { aspect-ratio: 16/9; width: 100%; object-fit: cover; display: block; }
+    .card-body { padding: 14px 14px 16px; }
+    .card h3 { margin: 6px 0 6px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .badge { display:inline-block; background: rgba(242,200,17,0.15); color: var(--accent); padding: 4px 8px; border: 1px solid rgba(242,200,17,0.3); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .2px; }
+
+    /* Resume */
+    .embed { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+
+    /* Footer */
+    footer { padding: 28px 0 60px; color: var(--muted); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .skills { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px){
+      .projects { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">Yassir <span>Ghlalou</span></div>
+        <div>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <div class="pill">Power BI • Python • Data Analysis</div>
+          <h1 class="title">Turning data into <span style="color:var(--accent)">actionable insights</span></h1>
+          <p class="subtitle">Data Analyst specializing in Power BI dashboards, KPI automation, and geospatial validation. I build reliable, decision-ready analytics for operations and leadership.</p>
+          <div class="actions">
+            <a class="btn primary" href="/mnt/data/Yassir_Ghlalou_US_Style_CV.pdf" download>Download CV</a>
+            <a class="btn ghost" href="https://linkedin.com/in/yassir-ghlalou" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="sales_dashboard.png" alt="Sales Dashboard" class="thumb"/>
+          <div class="metrics">
+            <div class="metric"><div>Reporting time</div><b>-30%</b></div>
+            <div class="metric"><div>Data accuracy</div><b>+25%</b></div>
+            <div class="metric"><div>Efficiency</div><b>+25%</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="lead">I'm a results-oriented Data Analyst with expertise in <b>Power BI, Python, SQL</b>, and statistical analysis. I collaborate with cross-functional teams to define KPIs, automate reporting, and transform raw data into clear insights.</p>
+        <div class="skills">
+          <div class="chip">Power BI / DAX</div>
+          <div class="chip">Python</div>
+          <div class="chip">SQL</div>
+          <div class="chip">SAS EG / DIS</div>
+          <div class="chip">Geospatial Analysis</div>
+          <div class="chip">KPI Tracking</div>
+          <div class="chip">Data Modeling</div>
+          <div class="chip">SAP Integration</div>
+          <div class="chip">Process Automation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <p class="lead">A selection of analytics work — from sales dashboards to operations reliability — with Power BI visuals and Python workflows.</p>
+        <div class="projects">
+          <!-- Project 1 -->
+          <article class="card">
+            <img src="sales_dashboard.png" alt="Sales Performance Dashboard" class="thumb"/>
+            <div class="card-body">
+              <span class="badge">Power BI</span>
+              <h3>Sales Performance Dashboard</h3>
+              <p class="meta">Interactive KPIs and trend lines for regional performance; enabled leadership to make real-time decisions.</p>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card">
+            <img src="geospatial_validation.png" alt="Geospatial Data Validation" class="thumb"/>
+            <div class="card-body">
+              <span class="badge">Python • Maps API</span>
+              <h3>Geospatial Data Validation</h3>
+              <p class="meta">Automated address verification pipeline with flagged anomalies; increased accuracy by ~25%.</p>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card">
+            <img src="network_kpi.png" alt="Network Operations KPI Tracker" class="thumb"/>
+            <div class="card-body">
+              <span class="badge">Power BI • SAP</span>
+              <h3>Network Operations KPI Tracker</h3>
+              <p class="meta">Consolidated uptime, latency, and MTTR into a unified view; improved visibility and reliability.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <h2>Resume</h2>
+        <p class="lead">Download my ATS-optimized resume with quantified achievements and technical keywords.</p>
+        <div class="embed">
+          <p><a href="/mnt/data/Yassir_Ghlalou_US_Style_CV.pdf" download>Download PDF Resume</a></p>
+          <p class="meta">Tip: Host this site on GitHub Pages/Netlify and place <code>Yassir_Ghlalou_US_Style_CV.pdf</code> and the three images in the same folder as this <code>index.html</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact">
+          <div class="panel">
+            <p class="lead">I'm open to Data Analyst roles and dashboard projects.</p>
+            <p>Email: <a href="mailto:yassir.ghlalou@uit.ac.ma">yassir.ghlalou@uit.ac.ma</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/yassir-ghlalou" target="_blank" rel="noreferrer">linkedin.com/in/yassir-ghlalou</a></p>
+          </div>
+          <div class="panel">
+            <p class="lead">Want to collaborate?</p>
+            <p>Share your data problem and goals — I can mock up a Power BI prototype in a day and iterate fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Yassir Ghlalou — Crafted with data & design.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementByrrId('y').textContent = new Date().getFullYear();
+  </script>
+</body>rrrrrrrrrrr
+</html>
